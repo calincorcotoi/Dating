@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
+import { take } from 'rxjs/operators';
 import { Member } from 'src/app/_models/members';
+import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
 
 @Component({
@@ -15,9 +17,11 @@ export class MemberDetailComponent implements OnInit {
   galleryOptions!: NgxGalleryOptions[];
   galleryImages!: NgxGalleryImage[];
   
-  constructor(private memberService: MembersService, private route: ActivatedRoute) { }
+  constructor(private memberService: MembersService, private route: ActivatedRoute, private accountService:AccountService) {
+   }
 
   ngOnInit(): void {
+    
     this.loadMember();
     this.galleryOptions = [
       {
@@ -51,5 +55,15 @@ export class MemberDetailComponent implements OnInit {
       this.member = member;
       this.galleryImages = this.getImages();
     })
+
+    // let username!:string ;
+    // this.accountService.currentUser$.pipe(take(1)).subscribe(user =>{
+    //   console.log(user.username);
+    //   username = user.username;
+    // })
+    // this.memberService.getMember(username).pipe(take(1)).subscribe(member =>{
+    //   this.member = member;
+    //   this.galleryImages = this.getImages();
+    // })
   }
 }
