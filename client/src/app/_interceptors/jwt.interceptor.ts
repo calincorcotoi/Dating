@@ -19,7 +19,9 @@ export class JwtInterceptor implements HttpInterceptor {
     let currentUser:User={
       username: '',
       token: '',
-      photoUrl: ''
+      photoUrl: '',
+      knownAs: '',
+      gender: ''
     };
 
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => currentUser = user);
