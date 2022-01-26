@@ -1,0 +1,11 @@
+.btn {
+    border-radius: 0;
+    width: 12.313rem;
+    padding: 1rem 0.8rem;
+    color:#000!important;
+    transition: none!important;
+}
+.btn:hover {
+    background-color:#fff!important;
+    color:#000!important;
+}
